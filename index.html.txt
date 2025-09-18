@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Crumb - Campaign Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7;
+            color: #4A2E1A;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+            background-color: #F3EADF;
+            background-image: radial-gradient(#D5C6B1 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+        .journey-line {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            bottom: 2rem;
+            width: 2px;
+            background-color: #D5C6B1;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .journey-item {
+            z-index: 1;
+        }
+        .modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+        .active-journey-item .icon-bg {
+            background-color: #E7A93C;
+            color: #ffffff;
+        }
+        .active-journey-item p {
+            font-weight: 700;
+        }
+        .timeline-item-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <header class="hero-bg py-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-center items-center gap-4 mb-4">
+                 <svg class="w-12 h-12 text-[#D99A2D]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C10.1667 2 8.58333 2.91667 7.25 4.75C5.91667 6.58333 5.25 8.83333 5.25 11.5C5.25 14.1667 5.91667 16.4167 7.25 18.25C8.58333 20.0833 10.1667 21 12 21C13.8333 21 15.4167 20.0833 16.75 18.25C18.0833 16.4167 18.75 14.1667 18.75 11.5C18.75 8.83333 18.0833 6.58333 16.75 4.75C15.4167 2.91667 13.8333 2 12 2ZM12 3.5C13.25 3.5 14.3333 4.20833 15.25 5.625C16.1667 7.04167 16.625 8.79167 16.625 10.875V11.5C16.625 13.5833 16.1667 15.3333 15.25 16.75C14.3333 18.1667 13.25 19.5 12 19.5C10.75 19.5 9.66667 18.1667 8.75 16.75C7.83333 15.3333 7.375 13.5833 7.375 11.5V10.875C7.375 8.79167 7.83333 7.04167 8.75 5.625C9.66667 4.20833 10.75 3.5 12 3.5Z" fill="currentColor"/>
+                    <path d="M12 6C11.1667 6 10.4167 6.16667 9.75 6.5C9.08333 6.83333 8.5 7.33333 8 8C8.5 7.33333 9.08333 6.83333 9.75 6.5C10.4167 6.16667 11.1667 6 12 6C12.8333 6 13.5833 6.16667 14.25 6.5C14.9167 6.83333 15.5 7.33333 16 8C15.5 7.33333 14.9167 6.83333 14.25 6.5C13.5833 6.16667 12.8333 6 12 6Z" fill="currentColor" opacity="0.5"/>
+                </svg>
+                <h1 class="font-display text-5xl md:text-7xl font-bold text-[#4A2E1A]">The Golden Crumb</h1>
+            </div>
+            <p class="mt-4 text-xl text-[#785A48]">Every Bite, A Golden Ticket to Winter Delights.</p>
+            <p class="max-w-2xl mx-auto mt-6 text-lg text-[#6B4D3A]">
+                An innovative campaign designed to transform a simple bakery purchase into an exciting, multi-layered treasure hunt. This showcase outlines how we'll captivate customers, drive sales, and build lasting loyalty this winter season.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-16 md:py-24">
+        
+        <!-- Interactive Consumer Journey Section -->
+        <section id="journey">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl md:text-5xl font-bold">The Consumer Journey</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-[#785A48]">Click on each stage to see how customers will experience the magic of "The Golden Crumb" campaign from start to finish.</p>
+            </div>
+
+            <div class="relative max-w-lg mx-auto md:max-w-none">
+                <div class="journey-line hidden md:block"></div>
+                <div id="journey-container" class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-0">
+                    <!-- Journey items will be injected here by JS -->
+                </div>
+            </div>
+
+            <div id="journey-details" class="mt-12 p-8 bg-white rounded-2xl shadow-lg border border-gray-100 min-h-[200px]">
+                <!-- Details for the selected journey stage will be shown here -->
+                 <div class="text-center p-8">
+                    <p class="text-xl text-[#785A48]">Select a stage above to view its details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reward Tiers Section -->
+        <section id="rewards" class="mt-24">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl md:text-5xl font-bold">A Multi-Tiered Reward System</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-[#785A48]">We hook customers with instant wins and keep them engaged with a thrilling chase for bigger prizes.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tier 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
+                    <div class="mx-auto bg-[#F3EADF] h-16 w-16 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-[#E7A93C]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9 9 0 119 0zM16.5 18.75a9 9 0 00-9 0m9 0c1.657 0 3-4.03 3-9s-1.343-9-3-9-3 4.03-3 9 1.343 9 3 9z" /></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mt-6">Tier 1: The Hook</h3>
+                    <p class="mt-2 text-[#785A48] font-semibold">Instant Gratification</p>
+                    <p class="mt-4 text-base text-[#6B4D3A]">Every single QR code scan yields a guaranteed reward. No one leaves empty-handed, ensuring a positive first interaction.</p>
+                </div>
+                <!-- Tier 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
+                    <div class="mx-auto bg-[#F3EADF] h-16 w-16 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-[#E7A93C]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mt-6">Tier 2: The Chase</h3>
+                    <p class="mt-2 text-[#785A48] font-semibold">The Collection Game</p>
+                    <p class="mt-4 text-base text-[#6B4D3A]">Scanning also reveals a digital "ingredient." Collecting a full set unlocks a higher-value reward, driving repeat purchases.</p>
+                </div>
+                <!-- Tier 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
+                    <div class="mx-auto bg-[#F3EADF] h-16 w-16 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-[#E7A93C]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9 9 0 119 0zM16.5 18.75a9 9 0 00-9 0m9 0c1.657 0 3-4.03 3-9s-1.343-9-3-9-3 4.03-3 9 1.343 9 3 9z" /></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mt-6">Tier 3: The Dream</h3>
+                    <p class="mt-2 text-[#785A48] font-semibold">The "Golden Crumb" Prize</p>
+                    <p class="mt-4 text-base text-[#6B4D3A]">Rare, randomly hidden QR codes unlock a grand prize. This creates massive hype and a "Willy Wonka" effect.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section id="timeline" class="mt-24">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl md:text-5xl font-bold">Campaign Timeline</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-[#785A48]">A simplified timeline for a perfectly executed winter campaign. Click each phase to expand.</p>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- Timeline items will be injected by JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#4A2E1A] text-white mt-16">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <p>&copy; 2025 The Golden Crumb Campaign. A recipe for success.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const journeyContainer = document.getElementById('journey-container');
+            const journeyDetails = document.getElementById('journey-details');
+            const timelineContainer = document.querySelector('#timeline .space-y-4');
+            let activeJourneyItem = null;
+
+            const journeyData = [
+                { 
+                    id: 0,
+                    title: 'Discovery', 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>`,
+                    details: {
+                        title: 'Stage 1: Discovery (Awareness)',
+                        description: 'This is how customers first find out about the campaign. Our goal is to pique their curiosity and make them aware of the exciting opportunity.',
+                        touchpoints: [
+                            'Eye-catching posters and standees in-store.',
+                            'Special festive product packaging.',
+                            'Engaging social media posts and ads.',
+                            'Stories from local food bloggers and influencers.',
+                            'Word of mouth from friends and family.'
+                        ]
+                    }
+                },
+                { 
+                    id: 1,
+                    title: 'Engagement', 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.085a2 2 0 00-1.736.99l-1.7 3.4M7 20h3a1 1 0 001-1v-4a1 1 0 00-1-1H7a1 1 0 00-1 1v4a1 1 0 001 1z" /></svg>`,
+                    details: {
+                        title: 'Stage 2: Engagement (Interest & Consideration)',
+                        description: 'Here, the customer\'s curiosity turns into a desire to participate. We highlight the "Guaranteed Prize" to remove any hesitation.',
+                        touchpoints: [
+                            'The clear and compelling promise of a "Guaranteed Prize".',
+                            'Well-trained staff enthusiastically explaining the campaign.',
+                            'Visuals of the attractive prizes and products.',
+                            'Social proof from other customers sharing their wins.'
+                        ]
+                    }
+                },
+                { 
+                    id: 2,
+                    title: 'Purchase', 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`,
+                    details: {
+                        title: 'Stage 3: Purchase (Action)',
+                        description: 'The customer decides to join the fun by buying the promotional product. The transaction is reinforced as the start of an exciting experience.',
+                        touchpoints: [
+                            'The cashier positively reinforcing the purchase.',
+                            'Receiving the beautifully designed special packaging.',
+                            'The feeling of buying not just a product, but a chance to win.'
+                        ]
+                    }
+                },
+                { 
+                    id: 3,
+                    title: 'Experience', 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
+                    details: {
+                        title: 'Stage 4: The Experience (The Magic Moment)',
+                        description: 'The core of the campaign. The customer scans the QR code at home and gets their instant reward and collectible in a seamless digital journey.',
+                        touchpoints: [
+                            'The excitement of finding the QR code inside the box.',
+                            'A quick scan leading to a branded mobile webpage.',
+                            'An engaging animation revealing their prize.',
+                            'Seeing their first collectible added to their virtual shelf.'
+                        ]
+                    }
+                },
+                { 
+                    id: 4,
+                    title: 'Advocacy', 
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h4M5 8h2m4 0h2" /></svg>`,
+                    details: {
+                        title: 'Stage 5: Re-engagement & Advocacy (The Loyalty Loop)',
+                        description: 'A one-time player becomes a repeat customer and a fan. The positive experience encourages sharing and drives organic word-of-mouth marketing.',
+                        touchpoints: [
+                            'The desire to complete the collection drives repeat purchases.',
+                            'Easy "Share" buttons to post their win on social media.',
+                            'Entering the #GoldenCrumbWinter photo contest.',
+                            'Telling friends and family about the fun experience.'
+                        ]
+                    }
+                },
+            ];
+
+            const timelineData = [
+                {
+                    phase: 'Phase 1: The Buildup',
+                    period: 'Late Oct – Mid Nov 2025',
+                    objective: 'Build Anticipation',
+                    actions: [
+                        'Finalize prize list and all print materials.',
+                        'Begin in-store and social media teaser campaigns.',
+                        'Conduct comprehensive staff training.'
+                    ]
+                },
+                {
+                    phase: 'Phase 2: Campaign Live!',
+                    period: 'Mid Nov 2025 – Mid Jan 2026',
+                    objective: 'Maximize Participation & Sales',
+                    actions: [
+                        'Launch in-store and digital campaigns.',
+                        'Collaborate with local food bloggers and influencers.',
+                        'Run weekly user-generated content contests to maintain engagement.'
+                    ]
+                },
+                {
+                    phase: 'Phase 3: The Grand Finale',
+                    period: 'Late January 2026',
+                    objective: 'Consolidate Gains & Foster Loyalty',
+                    actions: [
+                        'Announce the Grand Prize winner in a celebratory post.',
+                        'Send a "Thank You" message with a special discount to all participants.',
+                        'Analyze campaign data to measure success.'
+                    ]
+                }
+            ];
+
+            // Populate Journey Items
+            journeyData.forEach(item => {
+                const journeyItem = document.createElement('div');
+                journeyItem.className = 'journey-item relative bg-transparent text-center flex flex-col items-center cursor-pointer';
+                journeyItem.innerHTML = `
+                    <div class="icon-bg bg-white border-2 border-[#D5C6B1] h-16 w-16 rounded-full flex items-center justify-center transition-colors">
+                        ${item.icon}
+                    </div>
+                    <p class="mt-4 font-semibold text-sm md:text-base text-[#6B4D3A] transition-all">${item.title}</p>
+                `;
+                journeyItem.addEventListener('click', () => {
+                    updateJourneyDetails(item);
+                    
+                    if(activeJourneyItem) {
+                       activeJourneyItem.classList.remove('active-journey-item');
+                    }
+                    journeyItem.classList.add('active-journey-item');
+                    activeJourneyItem = journeyItem;
+                });
+                journeyContainer.appendChild(journeyItem);
+            });
+
+            function updateJourneyDetails(item) {
+                journeyDetails.innerHTML = `
+                    <h3 class="font-display text-2xl md:text-3xl font-bold">${item.details.title}</h3>
+                    <p class="mt-4 text-lg text-[#6B4D3A]">${item.details.description}</p>
+                    <div class="mt-6 border-t border-gray-200 pt-6">
+                        <h4 class="font-semibold text-lg text-[#4A2E1A]">Key Touchpoints:</h4>
+                        <ul class="mt-4 space-y-2 list-disc list-inside text-[#6B4D3A]">
+                            ${item.details.touchpoints.map(tp => `<li>${tp}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            // Populate Timeline Items
+            timelineData.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = 'bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden';
+                timelineItem.innerHTML = `
+                    <div class="p-6 cursor-pointer flex justify-between items-center timeline-item-header">
+                        <div>
+                            <p class="font-bold text-lg md:text-xl">${item.phase}</p>
+                            <p class="text-sm text-[#785A48]">${item.period}</p>
+                        </div>
+                        <svg class="w-6 h-6 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    </div>
+                    <div class="px-6 pb-0 timeline-item-content">
+                        <p class="font-semibold text-[#4A2E1A]">Objective: <span class="font-normal text-[#6B4D3A]">${item.objective}</span></p>
+                        <ul class="mt-4 space-y-2 list-disc list-inside text-[#6B4D3A] mb-6">
+                            ${item.actions.map(action => `<li>${action}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                timelineContainer.appendChild(timelineItem);
+
+                const header = timelineItem.querySelector('.timeline-item-header');
+                const content = timelineItem.querySelector('.timeline-item-content');
+                const icon = timelineItem.querySelector('svg');
+
+                header.addEventListener('click', () => {
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.style.paddingBottom = '0px';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.paddingBottom = '1.5rem';
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // Set initial state
+            if(journeyData.length > 0) {
+                 const firstItem = journeyContainer.querySelector('.journey-item');
+                 firstItem.classList.add('active-journey-item');
+                 activeJourneyItem = firstItem;
+                 updateJourneyDetails(journeyData[0]);
+            }
+
+        });
+    </script>
+
+</body>
+</html>
